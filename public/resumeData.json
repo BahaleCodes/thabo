@@ -1,0 +1,120 @@
+{
+  "main": {
+    "name":"Thabo Mponya's Portfolio",
+    "description":"I am a software developer and I use react to develop websites and web applications. I developed this portfolio website using React. I also develop Mobile Applications using Flutter, RESTful API services using Django and sometimes Firebase",
+    "image":"profilepic.jpg",
+    "bio":"Passionate software developer, experienced in Java, Python, and C#. I have been learning and practising JavaScript, HTML, CSS, Flutter, Django, and ReactJS through online courses from Udemy since April 2020 and I am currently enrolled in Cisco's DevNet course. Other programming languages I know include C/C++. I am also very interested in information security, I am aiming to get the IBM Cybersecurity certificate. I am a Linux enthusiast Linux, I have been using Ubuntu since 2018.",
+    "contactmessage":"Leave a message here if you want to get in contact with me.",
+    "email": "tmponya187@hotmail.com",
+    "phone": "0624406016",
+    "github":"https://github.com/BahaleCodes/",
+    "project":"https://github.com/BahaleCodes/thabosportfolio.git",
+    "address":{
+      "street":"10658",
+      "city":"Jack Street Majemantsho Village",
+      "state":"Mafikeng, North-West",
+      "zip": "2745"
+    },
+    "website": "http://www.timbakerdev.com",
+    "resumedownload":"ThaboCV.pdf",
+    "social":[
+      {
+        "name":"facebook",
+        "url":"https://www.facebook.com/XTeddyBear187Mp",
+        "className":"fa fa-facebook"
+      },
+      {
+        "name":"linkedin",
+        "url":"https://www.linkedin.com/in/thabo-mponya-6538a219b/",
+        "className":"fa fa-linkedin"
+      },
+      {
+        "name":"instagram",
+        "url":"https://www.instagram.com/materialteddybear/",
+        "className":"fa fa-instagram"
+      },
+      {
+        "name":"github",
+        "url":"https://github.com/BahaleCodes/",
+        "className":"fa fa-github"
+      }
+    ]
+  },
+  "resume":{
+    "skillmessage":"I have more than a years experience with Java, Python, SQL, C#, and Flutter. However since the beginning of August 2020 I have been developing web applications with ReactJS and Django. I am also experienced with GitHub and Heroku and my ideal Operating System is Ubuntu Linux",
+    "education":[
+      {
+        "school":"North-West University",
+        "degree":"Bsc Information Technology",
+        "graduated":"April 2022",
+        "description":"At school I spent a lot of time practicing Object Orient Programming. I have been part of a group that went to the Standard Bank Tech Impact Hackathon in 2018."
+      },
+      {
+        "school":"St' Mary's Secondary School",
+        "degree":"I studied pure Mathematics and Physical Sciences",
+        "graduated":"December 2017",
+        "description":"In High school I participated a lot in the Escom Science Expo, and in 2015 I won a 3rd place medal at the Regional finals."
+      }
+    ],
+    "work":[
+      {
+        "company":"Bahale Codes Software",
+        "title":"Software Developer",
+        "years":"January 2021 - Present",
+        "description":"I worked in developing websites for clients that requested websites from the company. So far I developed a website for a modelling academy and I am currently finishing off an E-commerce site for a customer."
+      }
+    ],
+    "skills":[
+      {
+        "name":"Python",
+        "level":"70%"
+      },
+      {
+        "name":"Java",
+        "level":"75%"
+      },
+      {
+        "name":"ReactJs",
+        "level":"80%"
+      },
+      {
+        "name":"CSS",
+        "level":"70%"
+      },
+      {
+        "name":"Django",
+        "level":"70%"
+      },
+      {
+        "name":"Flutter",
+        "level":"70%"
+      },
+      {
+        "name":"SQL",
+        "level":"90%"
+      },
+      {
+        "name":"C#",
+        "level":"65%"
+      },
+      {
+        "name":"C/C++",
+        "level":"55%"
+      },
+      {
+        "name":"NoSql",
+        "level":"75%"
+      }
+    ]
+  },
+  "portfolio":{
+    "projects": [
+      {
+        "title":"Taahirah Modelling Academy",
+        "category":"A website for a Modelling Academy",
+        "image":"01.jpg",
+        "url":"https://www.taahirahmodelingacademy.co.za/"
+      }
+    ]
+  }
+}
