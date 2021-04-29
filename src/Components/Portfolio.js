@@ -13,7 +13,7 @@ class Portfolio extends Component {
         <div key={id++} className="columns portfolio-item">
           <div className="item-wrap">
             <Zmage alt={projects.title} src={projectImage} />
-            <a href="https://www.taahirahmodelingacademy.co.za/tma" style={{ textAlign: "center" }}>{projects.title}</a>
+            <a href={projects.url} style={{ textAlign: "center" }}>{projects.title}</a>
           </div>
         </div>
       );

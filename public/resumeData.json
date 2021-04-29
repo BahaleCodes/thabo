@@ -2,7 +2,7 @@
   "main": {
     "name":"Thabo Mponya's Portfolio",
     "description":"I am a software developer and I use react to develop websites and web applications. I developed this portfolio website using React. I also develop Mobile Applications using Flutter, RESTful API services using Django and sometimes Firebase",
-    "image":"profilepic.jpg",
+    "image":"IMG_3012.JPG",
     "bio":"Passionate software developer, experienced in Java, Python, and C#. I have been learning and practising JavaScript, HTML, CSS, Flutter, Django, and ReactJS through online courses from Udemy since April 2020 and I am currently enrolled in Cisco's DevNet course. Other programming languages I know include C/C++. I am also very interested in information security, I am aiming to get the IBM Cybersecurity certificate. I am a Linux enthusiast Linux, I have been using Ubuntu since 2018.",
     "contactmessage":"Leave a message here if you want to get in contact with me.",
     "email": "tmponya187@hotmail.com",
@@ -114,6 +114,12 @@
         "category":"A website for a Modelling Academy",
         "image":"01.jpg",
         "url":"https://www.taahirahmodelingacademy.co.za/"
+      },
+      {
+        "title":"Bahale Codes Software",
+        "category":"A website for a Software Development Company",
+        "image":"02.png",
+        "url":"https://www.bahalecodes.co.za/"
       }
     ]
   }
