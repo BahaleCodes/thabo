@@ -10,13 +10,13 @@
     "github":"https://github.com/BahaleCodes/",
     "project":"https://github.com/BahaleCodes/thabosportfolio.git",
     "address":{
-      "street":"16 Oranjerivier Dr, Terenure estate",
-      "city":"Kempton Park",
+      "street":"16 Cannis Street, The Orchards, Akasia Ex. 11",
+      "city":"Pretoria",
       "state":"Gauteng Provice",
-      "zip": "1619"
+      "zip": "0182"
     },
-    "website": "http://www.timbakerdev.com",
-    "resumedownload":"ThaboCV.pdf",
+    "website": "http://thaboportholio.herokuapp.com",
+    "resumedownload":"ThaboMponyasCV.pdf",
     "social":[
       {
         "name":"facebook",
@@ -120,6 +120,24 @@
         "category":"A website for a Software Development Company",
         "image":"02.png",
         "url":"https://www.bahalecodes.co.za/"
+      },
+      {
+        "title":"Jays Online Cafe",
+        "category":"A web application a cafe",
+        "image":"03.png",
+        "url":"https://www.jaysonline.co.za/"
+      },
+      {
+        "title":"Courageous Act Foundation",
+        "category":"A website for a social empowerment foundation",
+        "image":"04.png",
+        "url":"https://www.courageousact.org.za/"
+      },
+      {
+        "title":"Mrs. Paulinah Teffu's portfolio Website",
+        "category":"A portfolio website for a high performing business woman.",
+        "image":"05.png",
+        "url":"https://paulinahteffu.herokuapp.com/"
       }
     ]
   }
