@@ -10,7 +10,7 @@
     "github": "https://github.com/BahaleCodes/",
     "project": "https://github.com/BahaleCodes/thabosportfolio.git",
     "address": {
-      "street": "84 Fox Street, Marshalltown",
+      "street": "94 Main Street, Marshalltown",
       "city": "Johannesburg",
       "state": "Gauteng Provice",
       "zip": "2107"
@@ -73,43 +73,18 @@
     "skills": [
       {
         "name": "VueJS",
-        "level": "65%",
+        "level": "85%",
         "xp": "< 1 year"
       },
       {
-        "name": "ReactJs",
-        "level": "85%",
-        "xp": "> 1 year"
-      },
-      {
-        "name": "NodeJs",
-        "level": "70%",
-        "xp": "> 1 year"
-      },
-      {
-        "name": "Python",
-        "level": "60%",
-        "xp": "1 year"
-      },
-      {
-        "name": "Java",
-        "level": "55%",
+        "name": "C# .NET",
+        "level": "80%",
         "xp": "2 year"
       },
       {
-        "name": "HTML & CSS",
-        "level": "75%",
+        "name": "ReactJs",
+        "level": "80%",
         "xp": "> 1 year"
-      },
-      {
-        "name": "Django",
-        "level": "60%",
-        "xp": "1 year"
-      },
-      {
-        "name": "Flutter",
-        "level": "65%",
-        "xp": "1 year"
       },
       {
         "name": "SQL",
@@ -122,8 +97,33 @@
         "xp": "> 1 year"
       },
       {
-        "name": "C# .NET",
-        "level": "70%",
+        "name": "NodeJs",
+        "level": "75%",
+        "xp": "> 1 year"
+      },
+      {
+        "name": "HTML & CSS",
+        "level": "75%",
+        "xp": "> 1 year"
+      },
+      {
+        "name": "Flutter",
+        "level": "65%",
+        "xp": "1 year"
+      },
+      {
+        "name": "Python",
+        "level": "60%",
+        "xp": "1 year"
+      },
+      {
+        "name": "Django",
+        "level": "55%",
+        "xp": "1 year"
+      },
+      {
+        "name": "Java",
+        "level": "55%",
         "xp": "2 year"
       }
     ]
