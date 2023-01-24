@@ -2,10 +2,10 @@
   "main": {
     "name": "Thabo Mponya's Portfolio",
     "description": "I am a software developer and I use react to develop websites and web applications. I developed this portfolio website using React. I also develop Mobile Applications using Flutter, RESTful API services using Django and sometimes Firebase",
-    "image": "IMG_3012.JPG",
+    "image": "ThaboMponya.jpg",
     "bio": "Passionate software developer, experienced in JavaScript, Java, and C# .NET. I have been learning and practicing JavaScript, HTML, CSS, Flutter, Django, and ReactJS throughonline courses from Udemy since April 2020 and I am a certified Cisco's DevNet instructor. Other programming languages I know include python and C/C++. I am also very interested in information security, I am aiming to get the IBM Cybersecurity certificate. I am a Linux enthusiast, I have been using Ubuntu since 2018 and have recently been trying other Linux distros like Guruda Linux.",
     "contactmessage": "Leave a message here if you want to get in contact with me.",
-    "email": "tmponya187@hotmail.com",
+    "email": "mollo.t.mponya@gmail.com",
     "phone": "0624406016",
     "github": "https://github.com/BahaleCodes/",
     "project": "https://github.com/BahaleCodes/thabosportfolio.git",
