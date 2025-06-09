@@ -1,10 +1,10 @@
 {
   "name": "thabo",
   "version": "0.1.0",
-  "engines": {
-    "node": "16.13.2"
-  },
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
