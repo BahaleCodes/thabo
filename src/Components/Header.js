@@ -1,74 +1,95 @@
-import React, { Component } from "react";
-import ParticlesBg from "particles-bg";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
-class Header extends Component {
-  render() {
-    if (!this.props.data) return null;
+const navLinks = [
+  { label: "About", href: "about" },
+  { label: "Journey", href: "journey" },
+  { label: "Expertise", href: "expertise" },
+  { label: "Contact", href: "contact" },
+];
 
-    const name = this.props.data.name;
-    const description = this.props.data.description;
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    return (
-      <header id="home">
-        <ParticlesBg type="random" bg={true} />
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-        <nav id="nav-wrap">
-          <a className="mobile-btn" href="#nav-wrap" title="Show navigation">
-            Show navigation
-          </a>
-          <a className="mobile-btn" href="#home" title="Hide navigation">
-            Hide navigation
-          </a>
+  const scrollTo = (id) => {
+    setMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
-          <ul id="nav" className="nav">
-            <li className="current">
-              <a className="smoothscroll" href="#home">
-                Home
-              </a>
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-cream/95 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
+      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <button
+          onClick={() => scrollTo("hero")}
+          className="text-lg font-semibold tracking-tight text-charcoal hover:text-amber transition-colors"
+        >
+          TM
+        </button>
+
+        {/* Desktop nav */}
+        <ul className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <button
+                onClick={() => scrollTo(link.href)}
+                className="text-sm font-medium text-slate hover:text-charcoal transition-colors"
+              >
+                {link.label}
+              </button>
             </li>
-            
-            <li>
-              <a className="smoothscroll" href="#about">
-                About
-              </a>
-            </li>
+          ))}
+        </ul>
 
-            <li>
-              <a className="smoothscroll" href="#resume">
-                Resume
-              </a>
-            </li>
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden text-charcoal"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </nav>
 
-            <li>
-              <a className="smoothscroll" href="#portfolio">
-                Works
-              </a>
-            </li>
-            
-            <li>
-              <a className="smoothscroll" href="#contact">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="row banner">
-          <div className="banner-text">
-            <h1 className="responsive-headline">{name}</h1>
-            <h3>{description}.</h3>
-            <hr />
-          </div>
-        </div>
-
-        <p className="scrolldown">
-          <a className="smoothscroll" href="#about">
-            <i className="icon-down-circle"></i>
-          </a>
-        </p>
-      </header>
-    );
-  }
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-cream/95 backdrop-blur-md border-t border-warmgrey"
+          >
+            <ul className="px-6 py-4 space-y-4">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => scrollTo(link.href)}
+                    className="text-sm font-medium text-slate hover:text-charcoal transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
 }
 
 export default Header;

@@ -1,173 +1,182 @@
-import React, { Component } from "react";
-import emailjs from 'emailjs-com';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
+import { Mail, MapPin, FileDown } from "lucide-react";
 
-class Contact extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      contactForm: {
-        name: props.name,
-        email: props.email,
-        subject: props.subject,
-        message: props.message,
-        loading: false,
-      }
-    }
-  }
+function Contact({ data }) {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState(null); // "sending" | "success" | "error"
 
-	handleName = (e) => {
-		var contactForm = this.state.contactForm;
-		contactForm.name = e.target.value;
-		this.setState({contactForm: contactForm});
-	}
-	handleEmail = (e) => {
-		var contactForm = this.state.contactForm;
-		contactForm.email = e.target.value;
-		this.setState({contactForm: contactForm});
-	}
-  handleSubject = (e) => {
-    var contactForm = this.state.contactForm;
-    contactForm.subject = e.target.value;
-    this.setState({contactForm: contactForm})
-  }
-	handleMessage = (e) => {
-		var contactForm = this.state.contactForm;
-		contactForm.message = e.target.value;
-		this.setState({contactForm: contactForm});
-	}
+  if (!data) return null;
 
-  handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({loading: true});
-    let templeteParams = {
-      from_name: this.state.contactForm.name,
-      to_name: 'Ntate Thabo Mponya',
-      subject: this.state.contactForm.subject,
-      message_html: this.state.contactForm.message,
-      from_email: this.state.contactForm.email
+    setStatus("sending");
+
+    const templateParams = {
+      from_name: form.name,
+      to_name: "Ntate Thabo Mponya",
+      subject: form.subject,
+      message_html: form.message,
+      from_email: form.email,
     };
-    console.log(this.state.contactForm.subject);
-    emailjs.send("service_ymndnah", "template_bwg2p3c", templeteParams, "user_iyyo8AYtN3opeCzdbnjvS")
-      .then(result => {
-        alert('Message sent, we will respond shortly. Thank you.', result.text);
-        this.setState({loading: true});
-        },
-        error => {
-            alert('An error was encounter, Please try again', error.text);
-            this.setState({loading: false});
-        }
+
+    emailjs
+      .send(
+        "service_ymndnah",
+        "template_bwg2p3c",
+        templateParams,
+        "user_iyyo8AYtN3opeCzdbnjvS"
       )
-      this.resetForm();
-  }
-  resetForm = () => {
-		this.setState({
-			name: '',
-			email: '',
-			subject: '',
-			message: '',
-		})
-	}
+      .then(() => {
+        setStatus("success");
+        setForm({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setStatus(null), 5000);
+      })
+      .catch(() => {
+        setStatus("error");
+        setTimeout(() => setStatus(null), 5000);
+      });
+  };
 
-  render() {
-    if (!this.props.data) return null;
+  return (
+    <section id="contact" className="py-24 bg-charcoal text-cream">
+      <div className="max-w-5xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Get in Touch</h2>
+          <p className="text-sm text-cream/70 mb-12 max-w-xl">
+            {data.contactmessage}
+          </p>
 
-    const name = this.props.data.name;
-    const street = this.props.data.address.street;
-    const city = this.props.data.address.city;
-    const state = this.props.data.address.state;
-    const zip = this.props.data.address.zip;
-    const phone = this.props.data.phone;
-    const message = this.props.data.contactmessage;
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="md:col-span-2 space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-transparent border border-cream/20 rounded text-sm text-cream placeholder:text-cream/40 focus:outline-none focus:border-amber transition-colors"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-transparent border border-cream/20 rounded text-sm text-cream placeholder:text-cream/40 focus:outline-none focus:border-amber transition-colors"
+                />
+              </div>
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                required
+                value={form.subject}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-transparent border border-cream/20 rounded text-sm text-cream placeholder:text-cream/40 focus:outline-none focus:border-amber transition-colors"
+              />
+              <textarea
+                name="message"
+                rows="6"
+                placeholder="Your Message"
+                required
+                value={form.message}
+                onChange={handleChange}
+                className="w-full px-4 py-3 bg-transparent border border-cream/20 rounded text-sm text-cream placeholder:text-cream/40 focus:outline-none focus:border-amber transition-colors resize-none"
+              />
 
-    return (
-      <section id="contact">
-        <div className="row section-head">
-          <div className="two columns header-col">
-            <h1>
-              <span>Get In Touch.</span>
-            </h1>
-          </div>
+              <div className="flex items-center gap-4">
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="px-6 py-3 bg-amber text-charcoal text-sm font-medium rounded hover:bg-amber-light transition-colors disabled:opacity-60"
+                >
+                  {status === "sending" ? "Sending..." : "Send Message"}
+                </button>
 
-          <div className="ten columns">
-            <p className="lead">{message}</p>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="eight columns">
-            <form onSubmit={this.handleSubmit} id="contactForm" name="sendMessage">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    id="name"
-                    size="50"
-                    placeholder="Your Full Name"
-                    required
-                    value={this.state.name}
-                    onChange={this.handleName.bind(this)}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <input
-                    type="email"
-                    id="email"
-                    size="50"
-                    placeholder="Your Email"
-                    required
-                    value={this.state.name}
-                    onChange={this.handleEmail.bind(this)}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <input
-                    type="text"
-                    id="subject"
-                    size="35"
-                    placeholder="Subject"
-                    required
-                    value={this.state.subject}
-                    onChange={this.handleSubject.bind(this)}
-                  />
-                </div>
-
-                <div>
-                  <textarea
-                    name="message"
-                    id="message"
-                    className="form-control"
-                    rows="15"
-                    placeholder="Talk to me..."
-                    required
-                    value={this.state.message}
-                    onChange={this.handleMessage.bind(this)}
-                  ></textarea>
-                </div>
-
-                <div>
-                  <button className="submit" type="submit">Submit</button>
-                </div>
+                {status === "success" && (
+                  <span className="text-sm text-green-400">
+                    Message sent successfully.
+                  </span>
+                )}
+                {status === "error" && (
+                  <span className="text-sm text-red-400">
+                    Something went wrong. Please try again.
+                  </span>
+                )}
+              </div>
             </form>
-          </div>
 
-          <aside className="four columns footer-widgets">
-            <div className="widget widget_contact">
-              <h4>Address and Phone</h4>
-              <p className="address">
-                {name}
-                <br />
-                {street} <br />
-                {city}, {state} {zip}
-                <br />
-                <span>{phone}</span>
-              </p>
+            {/* Contact info sidebar */}
+            <div className="space-y-6">
+              <div className="flex items-start gap-3">
+                <Mail size={18} className="text-amber mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-cream/50 mb-1">
+                    Email
+                  </p>
+                  <a
+                    href={`mailto:${data.email}`}
+                    className="text-sm text-cream hover:text-amber transition-colors"
+                  >
+                    {data.email}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <MapPin size={18} className="text-amber mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-cream/50 mb-1">
+                    Location
+                  </p>
+                  <p className="text-sm text-cream">{data.location}</p>
+                </div>
+              </div>
+
+              {data.resumedownload && (
+                <div className="flex items-start gap-3">
+                  <FileDown size={18} className="text-amber mt-0.5 shrink-0" />
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-cream/50 mb-1">
+                      Resume
+                    </p>
+                    <a
+                      href={data.resumedownload}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-cream hover:text-amber transition-colors"
+                    >
+                      Download CV
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
-          </aside>
-        </div>
-      </section>
-    );
-  }
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }
 
 export default Contact;

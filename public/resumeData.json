@@ -1,165 +1,108 @@
 {
   "main": {
-    "name": "Thabo Mponya's Portfolio",
-    "description": "I am a software developer and I use react to develop websites and web applications. I developed this portfolio website using React. I also develop Mobile Applications using Flutter, RESTful API services using Django and sometimes Firebase",
+    "name": "Thabo Mponya",
+    "title": "Technology Leader & Systems Architect",
+    "tagline": "Building scalable systems and high-performing engineering teams.",
     "image": "ThaboMponya.jpg",
-    "bio": "Passionate software developer, experienced in JavaScript, Java, and C# .NET. I have been learning and practicing JavaScript, HTML, CSS, Flutter, Django, and ReactJS throughonline courses from Udemy since April 2020 and I am a certified Cisco's DevNet instructor. Other programming languages I know include python and C/C++. I am also very interested in information security, I am aiming to get the IBM Cybersecurity certificate. I am a Linux enthusiast, I have been using Ubuntu since 2018 and have recently been trying other Linux distros like Guruda Linux.",
-    "contactmessage": "Leave a message here if you want to get in contact with me.",
     "email": "mollo.t.mponya@gmail.com",
     "phone": "0795208970",
-    "github": "https://github.com/BahaleCodes/",
-    "project": "https://github.com/BahaleCodes/thabosportfolio.git",
-    "address": {
-      "street": "94 Main Street, Marshalltown",
-      "city": "Johannesburg",
-      "state": "Gauteng Provice",
-      "zip": "2107"
-    },
-    "website": "http://thaboportholio.herokuapp.com",
+    "location": "Johannesburg, South Africa",
     "resumedownload": "ThaboMponyasCV.pdf",
+    "contactmessage": "I am always open to discussing technology strategy, systems architecture, or potential collaborations.",
     "social": [
       {
-        "name": "facebook",
-        "url": "https://www.facebook.com/XTeddyBear187Mp",
-        "className": "fa fa-facebook"
-      },
-      {
-        "name": "linkedin",
+        "name": "LinkedIn",
         "url": "https://www.linkedin.com/in/thabo-mponya-6538a219b/",
-        "className": "fa fa-linkedin"
+        "icon": "linkedin"
       },
       {
-        "name": "instagram",
+        "name": "GitHub",
+        "url": "https://github.com/ThaboMollo",
+        "icon": "github"
+      },
+      {
+        "name": "Instagram",
         "url": "https://www.instagram.com/materialteddybear/",
-        "className": "fa fa-instagram"
-      },
-      {
-        "name": "github",
-        "url": "https://github.com/BahaleCodes/",
-        "className": "fa fa-github"
+        "icon": "instagram"
       }
     ]
   },
-  "resume": {
-    "skillmessage": "I have more than a years experience with JavaScript (ReactJS, NodeJS), SQL, C#, and Flutter. Currently I'm working a lot with VueJS for user interface development and maintenance at work. I am also experienced with git source control and Azure Dev Ops and my ideal Operating System are Ubuntu Linux, Arch Linux and MacOS",
-    "education": [
-      {
-        "school": "North-West University",
-        "degree": "Bsc Information Technology",
-        "graduated": "7 April 2022",
-        "description": "At school I spent a lot of time practicing Object Orient Programming. I have been part of a group that went to the Standard Bank Tech Impact Hackathon in 2018."
-      },
-      {
-        "school": "St' Mary's Secondary School",
-        "degree": "I studied pure Mathematics and Physical Sciences",
-        "graduated": "December 2017",
-        "description": "In High school I participated a lot in the Escom Science Expo, and in 2015 I won a 3rd place medal at the Regional finals."
-      }
+  "about": {
+    "heading": "Philosophy & Approach",
+    "paragraphs": [
+      "I believe technology leadership is about more than writing code — it is about designing systems that empower people and organisations to move faster with confidence.",
+      "My journey from software developer to systems architect taught me that the best solutions emerge at the intersection of deep technical knowledge and clear strategic thinking. I approach every challenge by first understanding the business context, then designing systems that are resilient, maintainable, and built for growth.",
+      "I am passionate about mentoring engineers, fostering engineering cultures rooted in ownership and craftsmanship, and translating complex technical decisions into business outcomes that stakeholders can rally behind."
     ],
-    "work": [
+    "quote": {
+      "text": "Architecture is the art of making technical decisions that remain relevant long after the context has changed."
+    }
+  },
+  "journey": {
+    "heading": "Career Journey",
+    "milestones": [
       {
-        "company": "Bahale Codes Software",
-        "title": "Software Developer",
-        "years": "1 October 2020 - 1 November 2021",
-        "description": "I worked in developing websites for clients that requested websites from the company. So far I developed a website for a modelling academy and I am currently finishing off an E-commerce site for a customer."
+        "phase": "Foundation",
+        "role": "Software Developer",
+        "organization": "Bahale Codes Software",
+        "period": "2020 — 2021",
+        "summary": "Built full-stack web applications for clients, establishing a strong foundation in JavaScript ecosystems, client communication, and end-to-end delivery.",
+        "highlights": [
+          "Delivered production applications for multiple clients",
+          "Gained hands-on experience across the full development lifecycle"
+        ]
       },
       {
-        "company": "Digital Solution Foundry",
-        "title": "Junior Software Developer",
-        "years": "1 March 2022 - present",
-        "description": "I work in developing, maintaining and enhancing existing web applications. I also fix bugs assigned to me by the test team to enhance user experience. "
-      }
-    ],
-    "skills": [
-      {
-        "name": "VueJS",
-        "level": "85%",
-        "xp": "< 1 year"
+        "phase": "Growth",
+        "role": "Software Developer",
+        "organization": "Digital Solution Foundry",
+        "period": "2022 — Present",
+        "summary": "Evolved from feature development into systems thinking — designing application architectures, mentoring junior developers, and driving technical decisions across projects.",
+        "highlights": [
+          "Architected and maintained enterprise web applications",
+          "Led technical initiatives and mentored team members",
+          "Deepened expertise in VueJS, C# .NET, and cloud infrastructure"
+        ]
       },
       {
-        "name": "C# .NET",
-        "level": "80%",
-        "xp": "2 year"
-      },
-      {
-        "name": "ReactJs",
-        "level": "80%",
-        "xp": "> 1 year"
-      },
-      {
-        "name": "SQL",
-        "level": "80%",
-        "xp": "2 year"
-      },
-      {
-        "name": "NoSql",
-        "level": "75%",
-        "xp": "> 1 year"
-      },
-      {
-        "name": "NodeJs",
-        "level": "75%",
-        "xp": "> 1 year"
-      },
-      {
-        "name": "HTML & CSS",
-        "level": "75%",
-        "xp": "> 1 year"
-      },
-      {
-        "name": "Flutter",
-        "level": "65%",
-        "xp": "1 year"
-      },
-      {
-        "name": "Python",
-        "level": "60%",
-        "xp": "1 year"
-      },
-      {
-        "name": "Django",
-        "level": "55%",
-        "xp": "1 year"
-      },
-      {
-        "name": "Java",
-        "level": "55%",
-        "xp": "2 year"
+        "phase": "Education",
+        "role": "BSc Information Technology",
+        "organization": "North-West University",
+        "period": "Graduated 2022",
+        "summary": "Formal education in computer science fundamentals, object-oriented design, and software engineering principles.",
+        "highlights": [
+          "Standard Bank Tech Impact Hackathon participant",
+          "Cisco DevNet certified instructor"
+        ]
       }
     ]
   },
-  "portfolio": {
-    "projects": [
+  "expertise": {
+    "heading": "Domain Expertise",
+    "domains": [
       {
-        "title": "Taahirah Modelling Academy",
-        "category": "A website for a Modelling Academy",
-        "image": "01.jpg",
-        "url": "https://www.taahirahmodelingacademy.co.za/"
+        "title": "Systems Architecture",
+        "description": "Designing scalable, maintainable systems that align technical decisions with business goals. Experience across monolithic and distributed architectures.",
+        "skills": ["System Design", "API Architecture", "Database Design", "Performance Optimisation"]
       },
       {
-        "title": "Bahale Codes Software",
-        "category": "A website for a Software Development Company",
-        "image": "02.png",
-        "url": "https://www.bahalecodes.co.za/"
+        "title": "Technical Leadership",
+        "description": "Guiding engineering teams through complex projects, establishing coding standards, and fostering a culture of ownership and continuous improvement.",
+        "skills": ["Code Review", "Technical Mentorship", "Agile Delivery", "Engineering Culture"]
       },
       {
-        "title": "Jays Online Cafe",
-        "category": "A web application a cafe",
-        "image": "03.png",
-        "url": "https://www.jaysonline.co.za/"
+        "title": "Full-Stack Engineering",
+        "description": "Deep proficiency across modern web stacks, from reactive frontends to robust backend services and data layers.",
+        "skills": ["React", "Vue.js", "C# .NET", "Node.js", "SQL & NoSQL"]
       },
       {
-        "title": "Courageous Act Foundation",
-        "category": "A website for a social empowerment foundation",
-        "image": "04.png",
-        "url": "https://www.courageousact.org.za/"
-      },
-      {
-        "title": "Mrs. Paulinah Teffu's portfolio Website",
-        "category": "A portfolio website for a high performing business woman.",
-        "image": "05.png",
-        "url": "https://paulinahteffu.herokuapp.com/"
+        "title": "Cloud & Infrastructure",
+        "description": "Building and operating cloud-native applications with a focus on reliability, security, and cost efficiency.",
+        "skills": ["Azure DevOps", "CI/CD Pipelines", "Linux Administration", "Containerisation"]
       }
     ]
+  },
+  "analytics": {
+    "trackingId": "UA-110570651-1"
   }
 }

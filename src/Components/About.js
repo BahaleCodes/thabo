@@ -1,60 +1,41 @@
-import React, { Component } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 
-class About extends Component {
-  render() {
-    if (!this.props.data) return null;
+function About({ data }) {
+  if (!data) return null;
 
-    const name = this.props.data.name;
-    const profilepic = "images/" + this.props.data.image;
-    const bio = this.props.data.bio;
-    const street = this.props.data.address.street;
-    const city = this.props.data.address.city;
-    const state = this.props.data.address.state;
-    const zip = this.props.data.address.zip;
-    const phone = this.props.data.phone;
-    const email = this.props.data.email;
-    const resumeDownload = this.props.data.resumedownload;
+  return (
+    <section id="about" className="py-24 bg-white">
+      <div className="max-w-3xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-12">
+            {data.heading}
+          </h2>
 
-    return (
-      <section id="about">
-        <div className="row">
-          <div className="three columns">
-            <img className="profile-pic" src={profilepic} alt="Thabo Mponya" id="Thabo Mponya" />
+          <div className="space-y-6">
+            {data.paragraphs.map((paragraph, i) => (
+              <p key={i} className="text-base text-slate leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
-          <div className="nine columns main-col">
-            <h2>About Me</h2>
 
-            <p>{bio}</p>
-            <div className="row">
-              <div className="columns contact-details">
-                <h2>Contact Details</h2>
-                <p className="address">
-                  <span>{name}</span>
-                  <br />
-                  <span>
-                    {street}
-                    <br />
-                    {city} {state}, {zip}
-                  </span>
-                  <br />
-                  <span>{phone}</span>
-                  <br />
-                  <span>{email}</span>
-                </p>
-              </div>
-              <div className="columns download">
-                <p>
-                  <a href={resumeDownload} className="button">
-                    <i className="fa fa-download"></i>Download Resume
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+          {data.quote && (
+            <blockquote className="mt-12 pl-6 border-l-4 border-amber">
+              <p className="text-lg font-serif italic text-charcoal leading-relaxed">
+                "{data.quote.text}"
+              </p>
+            </blockquote>
+          )}
+        </motion.div>
+      </div>
+    </section>
+  );
 }
 
 export default About;

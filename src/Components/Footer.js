@@ -1,34 +1,57 @@
-import React, { Component } from "react";
+import React from "react";
+import { Linkedin, Github, Instagram } from "lucide-react";
 
-class Footer extends Component {
-  render() {
-    if (!this.props.data) return null;
+const iconMap = {
+  linkedin: Linkedin,
+  github: Github,
+  instagram: Instagram,
+};
 
-    const networks = this.props.data.social.map(function(network) {
-      return (
-        <li key={network.name}>
-          <a href={network.url}>
-            <i className={network.className}></i>
-          </a>
-        </li>
-      );
-    });
+function Footer({ data }) {
+  if (!data) return null;
 
-    return (
-      <footer>
-        <div className="row">
-          <div className="twelve columns">
-            <ul className="social-links">{networks}</ul>
-          </div>
-          <div id="go-top">
-            <a className="smoothscroll" title="Back to Top" href="#home">
-              <i className="icon-up-open"></i>
-            </a>
-          </div>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <footer className="border-t border-warmgrey bg-cream">
+      <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        {/* Social links */}
+        <div className="flex items-center gap-5">
+          {data.social?.map((link, i) => {
+            const Icon = iconMap[link.icon];
+            if (!Icon) return null;
+            return (
+              <a
+                key={i}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.name}
+                className="text-slate hover:text-charcoal transition-colors"
+              >
+                <Icon size={18} />
+              </a>
+            );
+          })}
         </div>
-      </footer>
-    );
-  }
+
+        {/* Copyright */}
+        <p className="text-xs text-slate">
+          &copy; {new Date().getFullYear()} Thabo Mponya. All rights reserved.
+        </p>
+
+        {/* Back to top */}
+        <button
+          onClick={scrollToTop}
+          className="text-xs font-medium text-slate hover:text-charcoal transition-colors"
+        >
+          Back to top
+        </button>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;

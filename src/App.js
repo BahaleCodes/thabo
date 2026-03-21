@@ -1,57 +1,43 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import ReactGA from "react-ga";
-import $ from "jquery";
-import "./App.css";
-import Header from "./Components/Header.js";
-import Footer from "./Components/Footer.js";
-import About from "./Components/About.js";
-import Resume from "./Components/Resume.js";
-import Contact from "./Components/Contact.js";
-// import Portfolio from "./Components/Portfolio";
+import Header from "./Components/Header";
+import Hero from "./Components/Hero";
+import About from "./Components/About";
+import Journey from "./Components/Journey";
+import Expertise from "./Components/Expertise";
+import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      foo: "bar",
-      resumeData: {}
-    };
+function App() {
+  const [data, setData] = useState(null);
 
-    ReactGA.initialize("UA-110570651-1");
-    ReactGA.pageview(window.location.pathname);
-  }
+  useEffect(() => {
+    fetch("/resumeData.json")
+      .then((res) => res.json())
+      .then((json) => setData(json))
+      .catch((err) => console.error("Failed to load data:", err));
+  }, []);
 
-  getResumeData() {
-    $.ajax({
-      url: "./resumeData.json",
-      dataType: "json",
-      cache: false,
-      success: function(data) {
-        this.setState({ resumeData: data });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-        alert(err);
-      }
-    });
-  }
+  useEffect(() => {
+    if (data?.analytics?.trackingId) {
+      ReactGA.initialize(data.analytics.trackingId);
+      ReactGA.pageview(window.location.pathname);
+    }
+  }, [data]);
 
-  componentDidMount() {
-    this.getResumeData();
-  }
+  if (!data) return null;
 
-  render() {
-    return (
-      <div className="App">
-        <Header data={this.state.resumeData.main} />
-        <About data={this.state.resumeData.main} />
-        <Resume data={this.state.resumeData.resume} />
-        {/* <Portfolio data={this.state.resumeData.portfolio} /> */}
-        <Contact data={this.state.resumeData.main} />
-        <Footer data={this.state.resumeData.main} />
-      </div>
-    );
-  }
+  return (
+    <div className="min-h-screen bg-cream font-sans">
+      <Header data={data.main} />
+      <Hero data={data.main} />
+      <About data={data.about} />
+      <Journey data={data.journey} />
+      <Expertise data={data.expertise} />
+      <Contact data={data.main} />
+      <Footer data={data.main} />
+    </div>
+  );
 }
 
 export default App;
