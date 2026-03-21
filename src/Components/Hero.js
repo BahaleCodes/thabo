@@ -44,8 +44,7 @@ function Hero({ data }) {
             {data.resumedownload && (
               <a
                 href={data.resumedownload}
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Thabo_Mponya_CV_Modern.pdf"
                 className="px-6 py-3 border border-charcoal text-charcoal text-sm font-medium rounded hover:bg-charcoal hover:text-cream transition-colors"
               >
                 Download CV

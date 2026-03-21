@@ -162,8 +162,7 @@ function Contact({ data }) {
                     </p>
                     <a
                       href={data.resumedownload}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      download="Thabo_Mponya_CV_Modern.pdf"
                       className="text-sm text-cream hover:text-amber transition-colors"
                     >
                       Download CV
