@@ -20,6 +20,7 @@
     "web-vitals": "^3.5.2"
   },
   "scripts": {
+    "prebuild": "node scripts/generate-seo-files.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

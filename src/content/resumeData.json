@@ -1,0 +1,108 @@
+{
+  "main": {
+    "name": "Thabo Mponya",
+    "title": "Technology Leader & Systems Architect",
+    "tagline": "Building scalable systems and high-performing engineering teams.",
+    "image": "ThaboMponya.jpg",
+    "email": "mollo.t.mponya@gmail.com",
+    "phone": "0795208970",
+    "location": "Johannesburg, South Africa",
+    "resumedownload": "/Thabo_Mponya_CV_Modern.pdf",
+    "contactmessage": "I am always open to discussing technology strategy, systems architecture, or potential collaborations.",
+    "social": [
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/thabo-mponya-6538a219b/",
+        "icon": "linkedin"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/ThaboMollo",
+        "icon": "github"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/materialteddybear/",
+        "icon": "instagram"
+      }
+    ]
+  },
+  "about": {
+    "heading": "Philosophy & Approach",
+    "paragraphs": [
+      "I believe technology leadership is about more than writing code - it is about designing systems that empower people and organisations to move faster with confidence.",
+      "My journey from software developer to systems architect taught me that the best solutions emerge at the intersection of deep technical knowledge and clear strategic thinking. I approach every challenge by first understanding the business context, then designing systems that are resilient, maintainable, and built for growth.",
+      "I am passionate about mentoring engineers, fostering engineering cultures rooted in ownership and craftsmanship, and translating complex technical decisions into business outcomes that stakeholders can rally behind."
+    ],
+    "quote": {
+      "text": "Architecture is the art of making technical decisions that remain relevant long after the context has changed."
+    }
+  },
+  "journey": {
+    "heading": "Career Journey",
+    "milestones": [
+      {
+        "phase": "Foundation",
+        "role": "Software Developer",
+        "organization": "Bahale Codes Software",
+        "period": "2020 - 2021",
+        "summary": "Built full-stack web applications for clients, establishing a strong foundation in JavaScript ecosystems, client communication, and end-to-end delivery.",
+        "highlights": [
+          "Delivered production applications for multiple clients",
+          "Gained hands-on experience across the full development lifecycle"
+        ]
+      },
+      {
+        "phase": "Growth",
+        "role": "Software Developer",
+        "organization": "Digital Solution Foundry",
+        "period": "2022 - Present",
+        "summary": "Evolved from feature development into systems thinking - designing application architectures, mentoring junior developers, and driving technical decisions across projects.",
+        "highlights": [
+          "Architected and maintained enterprise web applications",
+          "Led technical initiatives and mentored team members",
+          "Deepened expertise in VueJS, C# .NET, and cloud infrastructure"
+        ]
+      },
+      {
+        "phase": "Education",
+        "role": "BSc Information Technology",
+        "organization": "North-West University",
+        "period": "Graduated 2022",
+        "summary": "Formal education in computer science fundamentals, object-oriented design, and software engineering principles.",
+        "highlights": [
+          "Standard Bank Tech Impact Hackathon participant",
+          "Cisco DevNet certified instructor"
+        ]
+      }
+    ]
+  },
+  "expertise": {
+    "heading": "Domain Expertise",
+    "domains": [
+      {
+        "title": "Systems Architecture",
+        "description": "Designing scalable, maintainable systems that align technical decisions with business goals. Experience across monolithic and distributed architectures.",
+        "skills": ["System Design", "API Architecture", "Database Design", "Performance Optimisation"]
+      },
+      {
+        "title": "Technical Leadership",
+        "description": "Guiding engineering teams through complex projects, establishing coding standards, and fostering a culture of ownership and continuous improvement.",
+        "skills": ["Code Review", "Technical Mentorship", "Agile Delivery", "Engineering Culture"]
+      },
+      {
+        "title": "Full-Stack Engineering",
+        "description": "Deep proficiency across modern web stacks, from reactive frontends to robust backend services and data layers.",
+        "skills": ["React", "Vue.js", "C# .NET", "Node.js", "SQL & NoSQL"]
+      },
+      {
+        "title": "Cloud & Infrastructure",
+        "description": "Building and operating cloud-native applications with a focus on reliability, security, and cost efficiency.",
+        "skills": ["Azure DevOps", "CI/CD Pipelines", "Linux Administration", "Containerisation"]
+      }
+    ]
+  },
+  "analytics": {
+    "trackingId": "UA-110570651-1"
+  }
+}
