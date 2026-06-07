@@ -1,51 +1,67 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
-import { Mail, MapPin, FileDown } from "lucide-react";
+"use client";
 
-function Contact({ data }) {
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, MapPin, FileDown } from "lucide-react";
+import type { MainData } from "@/app/lib/types";
+
+function Contact({ data }: { data: MainData }) {
   const [form, setForm] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState(null); // "sending" | "success" | "error"
+  const [status, setStatus] = useState<
+    "sending" | "success" | "error" | null
+  >(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   if (!data) return null;
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
 
     const templateParams = {
-      from_name: form.name,
-      to_name: "Ntate Thabo Mponya",
+      name: form.name,
+      email: form.email,
       subject: form.subject,
-      message_html: form.message,
-      from_email: form.email,
+      message: form.message,
+      time: new Date().toLocaleString(),
     };
 
-    emailjs
-      .send(
-        "service_ymndnah",
-        "template_bwg2p3c",
-        templateParams,
-        "user_iyyo8AYtN3opeCzdbnjvS"
-      )
-      .then(() => {
-        setStatus("success");
-        setForm({ name: "", email: "", subject: "", message: "" });
-        setTimeout(() => setStatus(null), 5000);
-      })
-      .catch(() => {
-        setStatus("error");
-        setTimeout(() => setStatus(null), 5000);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(templateParams),
       });
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body?.error || "Email send failed.");
+      }
+
+      setStatus("success");
+      setErrorMessage(null);
+      setForm({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setStatus(null), 5000);
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Something went wrong."
+      );
+      setTimeout(() => setStatus(null), 5000);
+    }
   };
 
   return (
@@ -96,7 +112,7 @@ function Contact({ data }) {
               />
               <textarea
                 name="message"
-                rows="6"
+                rows={6}
                 placeholder="Your Message"
                 required
                 value={form.message}
@@ -120,7 +136,7 @@ function Contact({ data }) {
                 )}
                 {status === "error" && (
                   <span className="text-sm text-red-400">
-                    Something went wrong. Please try again.
+                    {errorMessage || "Something went wrong. Please try again."}
                   </span>
                 )}
               </div>

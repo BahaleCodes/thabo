@@ -1,7 +1,9 @@
-import React from "react";
-import { motion } from "framer-motion";
+"use client";
 
-function Journey({ data }) {
+import { motion } from "framer-motion";
+import type { JourneyData } from "@/app/lib/types";
+
+function Journey({ data }: { data: JourneyData }) {
   if (!data) return null;
 
   return (

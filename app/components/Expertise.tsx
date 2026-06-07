@@ -1,7 +1,9 @@
-import React from "react";
-import { motion } from "framer-motion";
+"use client";
 
-function Expertise({ data }) {
+import { motion } from "framer-motion";
+import type { ExpertiseData } from "@/app/lib/types";
+
+function Expertise({ data }: { data: ExpertiseData }) {
   if (!data) return null;
 
   return (

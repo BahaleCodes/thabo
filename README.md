@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Thabo Mponya — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio site for Thabo Mponya (Technology Leader & Systems Architect),
+built with **Next.js** (App Router), **TypeScript**, and **Tailwind CSS**, and
+deployed on **Vercel**.
 
-## Available Scripts
+It's a statically generated (SSG) single page composed of section components
+(Hero, About, Journey, Expertise, Contact, Footer) with a client-side contact
+form (EmailJS) and Google Analytics via `@next/third-parties`.
 
-In the project directory, you can run:
+## Requirements
 
-### `npm start`
+- Node.js **20.9+** (Next.js 16 requirement)
+- [Yarn](https://classic.yarnpkg.com/) (this repo uses a `yarn.lock`)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+yarn install
+cp .env.example .env.local   # then fill in the values (see below)
+yarn dev
+```
 
-### `npm test`
+Open [http://localhost:3000](http://localhost:3000).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Scripts
 
-### `npm run build`
+| Command       | Description                                            |
+| ------------- | ------------------------------------------------------ |
+| `yarn dev`    | Start the dev server (hot reload) at `localhost:3000`. |
+| `yarn build`  | Production build (statically prerenders the site).     |
+| `yarn start`  | Serve the production build locally.                    |
+| `yarn lint`   | Run Next.js / ESLint checks.                           |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Environment Variables
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Defined in `.env.local` for local dev (gitignored) and in the Vercel project
+dashboard for production. See `.env.example` for the full list.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Variable                          | Purpose                                              |
+| --------------------------------- | ---------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`            | Canonical site URL (used by metadata, sitemap, OG).  |
+| `NEXT_PUBLIC_GA_ID`               | GA4 measurement ID (`G-XXXX`). GA is omitted if unset.|
+| `NEXT_PUBLIC_EMAILJS_SERVICE_ID`  | EmailJS service ID for the contact form.             |
+| `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` | EmailJS template ID.                                 |
+| `NEXT_PUBLIC_EMAILJS_USER_ID`     | EmailJS public user/key.                             |
 
-### `npm run eject`
+All are `NEXT_PUBLIC_*` (client-exposed by design — they are not secrets).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Project Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+app/
+  layout.tsx        # <html>/<body>, fonts, metadata, JSON-LD, analytics
+  page.tsx          # composes the section components
+  globals.css       # Tailwind directives + global styles
+  sitemap.ts        # generates /sitemap.xml
+  robots.ts         # generates /robots.txt
+  components/        # Header, Hero, About, Journey, Expertise, Contact, Footer
+  content/           # resumeData.ts (site content)
+  lib/               # types.ts (content type definitions)
+public/              # static assets (images, CV PDF, favicon, manifest)
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## SEO
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Page metadata (title, description, OpenGraph, Twitter, canonical) is defined
+  in `app/layout.tsx` via the Next.js Metadata API and rendered at build time.
+- Person + WebSite JSON-LD structured data is server-rendered in the layout.
+- `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and `/robots.txt`.
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Vercel auto-detects Next.js — no extra configuration needed. Set the environment
+variables above in the Vercel project dashboard before deploying.

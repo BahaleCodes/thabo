@@ -1,13 +1,15 @@
-import React from "react";
+"use client";
+
 import { Linkedin, Github, Instagram } from "lucide-react";
+import type { MainData } from "@/app/lib/types";
 
 const iconMap = {
   linkedin: Linkedin,
   github: Github,
   instagram: Instagram,
-};
+} as const;
 
-function Footer({ data }) {
+function Footer({ data }: { data: MainData }) {
   if (!data) return null;
 
   const scrollToTop = () => {
@@ -20,7 +22,7 @@ function Footer({ data }) {
         {/* Social links */}
         <div className="flex items-center gap-5">
           {data.social?.map((link, i) => {
-            const Icon = iconMap[link.icon];
+            const Icon = iconMap[link.icon as keyof typeof iconMap];
             if (!Icon) return null;
             return (
               <a

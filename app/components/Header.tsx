@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -6,6 +8,8 @@ const navLinks = [
   { label: "About", href: "about" },
   { label: "Journey", href: "journey" },
   { label: "Expertise", href: "expertise" },
+  { label: "Work", href: "work" },
+  { label: "Approach", href: "ai" },
   { label: "Contact", href: "contact" },
 ];
 
@@ -19,7 +23,7 @@ function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id) => {
+  const scrollTo = (id: string) => {
     setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };

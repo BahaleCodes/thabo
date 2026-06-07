@@ -1,7 +1,9 @@
-import React from "react";
-import { motion } from "framer-motion";
+"use client";
 
-function Hero({ data }) {
+import { motion } from "framer-motion";
+import type { MainData } from "@/app/lib/types";
+
+function Hero({ data }: { data: MainData }) {
   if (!data) return null;
 
   const scrollToContact = () => {

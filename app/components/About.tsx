@@ -1,7 +1,9 @@
-import React from "react";
-import { motion } from "framer-motion";
+"use client";
 
-function About({ data }) {
+import { motion } from "framer-motion";
+import type { AboutData } from "@/app/lib/types";
+
+function About({ data }: { data: AboutData }) {
   if (!data) return null;
 
   return (
