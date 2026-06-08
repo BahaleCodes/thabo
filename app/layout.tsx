@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Lora } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/react";
 import resumeData from "@/app/content/resumeData";
 import "./globals.css";
 
@@ -128,6 +129,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-cream font-sans">
         {children}
         {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
+        <Analytics />
       </body>
     </html>
   );
