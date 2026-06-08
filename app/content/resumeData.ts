@@ -34,7 +34,7 @@ const resumeData: ResumeData = {
   about: {
     heading: "Philosophy & Approach",
     paragraphs: [
-      "I'm an Azure administrator and software engineer. Day to day I keep cloud environments reliable, secure, and cost-aware, and I build the applications that run on them in C#/.NET and JavaScript/TypeScript.",
+      "I'm an Azure administrator and software engineer. Day to day I keep cloud environments reliable, secure, and cost-aware, and I build the applications that run on them in C#/.NET, JavaScript/TypeScript, and Flutter.",
       "My focus is the craft of engineering: writing clear, maintainable code, automating the boring parts, and understanding the business context before I reach for a solution. I'm deliberately growing toward systems architecture — designing for resilience and growth, not just the next feature.",
       "I care about mentoring, engineering cultures rooted in ownership, and translating technical decisions into outcomes stakeholders can rally behind.",
     ],
@@ -66,7 +66,7 @@ const resumeData: ResumeData = {
           "Evolved from feature development into systems thinking - designing application architectures, mentoring junior developers, and driving technical decisions across projects.",
         highlights: [
           "Administer and maintain Azure cloud environments and CI/CD pipelines",
-          "Build and ship applications in C#/.NET, Vue.js, and TypeScript",
+          "Build and ship applications in C#/.NET, JavaScript, Flutter, Vue.js, and TypeScript",
           "Lead technical initiatives and mentor junior developers",
         ],
       },
@@ -96,8 +96,8 @@ const resumeData: ResumeData = {
       {
         title: "Software Engineering",
         description:
-          "Building backends and APIs in C#/.NET and reactive frontends in JavaScript/TypeScript across modern web stacks.",
-        skills: ["C# .NET", "TypeScript", "React", "Vue.js", "Node.js"],
+          "Building backends and APIs in C#/.NET and reactive frontends in JavaScript/TypeScript and Flutter across modern web stacks.",
+        skills: ["C# .NET", "JavaScript", "TypeScript", "React", "Vue.js", "Node.js", "Flutter"],
       },
       {
         title: "Systems & Architecture",
