@@ -25,7 +25,11 @@ const TITLE =
   "Thabo Mponya | Azure Administrator & Software Engineer";
 const DESCRIPTION =
   "Thabo Mponya — a Johannesburg-based Azure administrator and software engineer (C#/.NET, JavaScript/TypeScript), growing into systems architecture.";
+// High-res portrait for Google structured data (Google prefers large images).
 const IMAGE = "/images/ThaboMponya.jpg";
+// Web-optimized 1200x1200 portrait for social link previews (WhatsApp/X/LinkedIn).
+// Kept well under WhatsApp's ~300KB fetch limit so it never falls back to the icon.
+const OG_IMAGE = "/images/og-thabo.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -54,7 +58,14 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/",
-    images: [{ url: IMAGE, alt: "Portrait of Thabo Mponya" }],
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 1200,
+        alt: "Portrait of Thabo Mponya",
+      },
+    ],
     firstName: "Thabo",
     lastName: "Mponya",
   },
@@ -62,11 +73,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: [IMAGE],
+    images: [OG_IMAGE],
   },
   icons: {
-    icon: "/mponya.ico",
-    apple: "/logo192.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png", sizes: "96x96" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
 };
