@@ -6,7 +6,7 @@ const resumeData: ResumeData = {
     title: "Azure Administrator & Software Engineer",
     tagline:
       "Azure administration and software engineering across C#/.NET and TypeScript — growing into systems architecture.",
-    image: "ThaboMponya.jpg",
+    image: "thabo-mponya.jpg",
     email: "mollo.t.mponya@gmail.com",
     phone: "0795208970",
     location: "Johannesburg, South Africa",

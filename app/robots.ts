@@ -5,7 +5,13 @@ const SITE_URL =
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
+    rules: [
+      { userAgent: "*", allow: "/" },
+      // Explicit so the portrait can never be excluded from image search by a
+      // future tightening of the catch-all rule above.
+      { userAgent: "Googlebot-Image", allow: ["/images/", "/"] },
+    ],
     sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

@@ -25,11 +25,18 @@ const TITLE =
   "Thabo Mponya | Azure Administrator & Software Engineer";
 const DESCRIPTION =
   "Thabo Mponya — a Johannesburg-based Azure administrator and software engineer (C#/.NET, JavaScript/TypeScript), growing into systems architecture.";
-// High-res portrait for Google structured data (Google prefers large images).
-const IMAGE = "/images/ThaboMponya.jpg";
-// Web-optimized 1200x1200 portrait for social link previews (WhatsApp/X/LinkedIn).
+// The portrait is ALSO rendered as a real <img> in Hero.tsx at this exact path.
+// That is what makes it eligible for Google Images — structured data and og:image
+// alone are never indexed as pictures. Keep these three in sync: the <img> src,
+// the ImageObject below, and the sitemap image entry.
+const IMAGE = "/images/thabo-mponya.jpg";
+const IMAGE_WIDTH = 1001;
+const IMAGE_HEIGHT = 1001;
+const IMAGE_ALT =
+  "Thabo Mponya, Azure administrator and software engineer based in Johannesburg, South Africa";
+// Web-optimized portrait for social link previews (WhatsApp/X/LinkedIn).
 // Kept well under WhatsApp's ~300KB fetch limit so it never falls back to the icon.
-const OG_IMAGE = "/images/og-thabo.jpg";
+const OG_IMAGE = "/images/thabo-mponya-og.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -61,9 +68,10 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        width: 1200,
-        height: 1200,
-        alt: "Portrait of Thabo Mponya",
+        width: IMAGE_WIDTH,
+        height: IMAGE_HEIGHT,
+        alt: IMAGE_ALT,
+        type: "image/jpeg",
       },
     ],
     firstName: "Thabo",
@@ -73,7 +81,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: [OG_IMAGE],
+    images: [{ url: OG_IMAGE, alt: IMAGE_ALT }],
   },
   icons: {
     icon: [
@@ -85,44 +93,95 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: resumeData.main.name,
-    url: `${SITE_URL}/`,
-    image: `${SITE_URL}${IMAGE}`,
-    email: resumeData.main.email,
-    telephone: resumeData.main.phone,
-    jobTitle: "Azure Administrator & Software Engineer",
-    description: DESCRIPTION,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Johannesburg",
-      addressCountry: "ZA",
+// One connected @graph instead of loose, duplicated nodes. The Person, the
+// page, and the portrait each carry a stable @id and reference each other, so
+// Google resolves them into a single entity ("Thabo Mponya" + this face)
+// rather than three unrelated facts.
+const PERSON_ID = `${SITE_URL}/#thabo-mponya`;
+const IMAGE_ID = `${SITE_URL}/#portrait`;
+const PAGE_ID = `${SITE_URL}/#profilepage`;
+const SITE_ID = `${SITE_URL}/#website`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ImageObject",
+      "@id": IMAGE_ID,
+      url: `${SITE_URL}${IMAGE}`,
+      contentUrl: `${SITE_URL}${IMAGE}`,
+      width: IMAGE_WIDTH,
+      height: IMAGE_HEIGHT,
+      encodingFormat: "image/jpeg",
+      caption: IMAGE_ALT,
+      representativeOfPage: true,
+      creditText: resumeData.main.name,
+      about: { "@id": PERSON_ID },
     },
-    alumniOf: { "@type": "CollegeOrUniversity", name: "North-West University" },
-    worksFor: { "@type": "Organization", name: "Digital Solution Foundry" },
-    sameAs: resumeData.main.social.map((s) => s.url),
-    knowsAbout: [
-      "Azure Administration",
-      "Cloud Infrastructure",
-      "C# .NET",
-      "TypeScript",
-      "JavaScript",
-      "React",
-      "Vue.js",
-      "Systems Architecture",
-    ],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: resumeData.main.name,
-    url: `${SITE_URL}/`,
-    description: DESCRIPTION,
-  },
-];
+    {
+      "@type": "Person",
+      "@id": PERSON_ID,
+      name: resumeData.main.name,
+      givenName: "Thabo",
+      familyName: "Mponya",
+      url: `${SITE_URL}/`,
+      mainEntityOfPage: { "@id": PAGE_ID },
+      image: { "@id": IMAGE_ID },
+      email: resumeData.main.email,
+      telephone: resumeData.main.phone,
+      jobTitle: "Azure Administrator & Software Engineer",
+      description: DESCRIPTION,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Johannesburg",
+        addressRegion: "Gauteng",
+        addressCountry: "ZA",
+      },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "North-West University",
+      },
+      worksFor: { "@type": "Organization", name: "Digital Solution Foundry" },
+      sameAs: resumeData.main.social.map((s) => s.url),
+      knowsAbout: [
+        "Azure Administration",
+        "Cloud Infrastructure",
+        "C# .NET",
+        "TypeScript",
+        "JavaScript",
+        "React",
+        "Vue.js",
+        "Systems Architecture",
+      ],
+    },
+    {
+      // ProfilePage (not plain WebPage) is what tells Google this URL IS the
+      // canonical profile for the person, which is the page type it draws on
+      // for name queries and knowledge panels.
+      "@type": "ProfilePage",
+      "@id": PAGE_ID,
+      url: `${SITE_URL}/`,
+      name: TITLE,
+      description: DESCRIPTION,
+      inLanguage: "en",
+      isPartOf: { "@id": SITE_ID },
+      mainEntity: { "@id": PERSON_ID },
+      about: { "@id": PERSON_ID },
+      primaryImageOfPage: { "@id": IMAGE_ID },
+      image: { "@id": IMAGE_ID },
+    },
+    {
+      "@type": "WebSite",
+      "@id": SITE_ID,
+      name: resumeData.main.name,
+      alternateName: TITLE,
+      url: `${SITE_URL}/`,
+      description: DESCRIPTION,
+      inLanguage: "en",
+      publisher: { "@id": PERSON_ID },
+    },
+  ],
+};
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
